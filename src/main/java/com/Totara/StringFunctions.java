@@ -1,3 +1,5 @@
+package com.Totara;
+
 public class StringFunctions {
     private static StringFunctions instance;
 
