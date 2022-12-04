@@ -15,6 +15,19 @@ public class StringFunctions {
     }
 
     public static String wrap(String string, int length) {
+    	if (length <= 0) {
+    		throw new IllegalArgumentException("Length must be greater than 0");
+    	}
+    	if (string.length() <= length) {
+    		return string;
+    	}
+    	String ret = "";
+    	for (String word: string.split(" ")) {
+    		String line = "";
+    		if (word.length() > length) {
+    			
+    		}
+    	}
         return "";
     }
 }
