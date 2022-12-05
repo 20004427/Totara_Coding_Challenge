@@ -27,7 +27,7 @@ public class StringFunctions {
     	if (string.length() <= length) {
     		return string;
     	}
-    	String ret = "";
+    	ArrayList<String> ret = new ArrayList<>();
     	ArrayList<String> line = new ArrayList<>();
     	String[] words = string.split(" ");
     	for (String word: words) {
@@ -38,10 +38,8 @@ public class StringFunctions {
     				int index = length - line.stream().mapToInt(String::length).sum() - line.size();
     				if (index > 0) {
 	    				line.add(word.substring(0, index));
-	    				ret += String.join(" ", line) + "\n";
-    				} else {
-    					ret += String.join(" ", line) + "\n";
     				}
+    				ret.add(String.join(" ", line));
     				line.clear();
     				String[] remainder;
     				if (index > 0) {
@@ -53,18 +51,20 @@ public class StringFunctions {
     					if (s.length() < length) {
     						line.add(s);
     					} else {
-    						ret += s + "\n";
+    						ret.add(s);
     					}
     				}
     				
     			} else {
-	    			ret += String.join(" ", line) + "\n";
+	    			ret.add(String.join(" ", line));
 	    			line.clear();
 	    			line.add(word);
     			}
     		}
     	}
-    	ret += String.join(" ", line);
-        return ret;
+    	if (!line.isEmpty()) {
+    		ret.add(String.join(" ", line));
+    	}
+        return String.join("\n", ret);
     }
 }

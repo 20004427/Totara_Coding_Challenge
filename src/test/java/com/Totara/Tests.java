@@ -94,6 +94,27 @@ public class Tests {
 		assertEquals(expected, actual);
 	}
 	
+	//____ BOUNDARY TESTS _____
+	@Test()
+	void testLengthOfOne() {
+		String expected = "T\ne\ns\nt";
+		String input = "Test";
+		int length = 1;
+		
+		String actual = stringFunctions.wrap(input, length);
+		assertEquals(expected, actual);
+	}
+	
+	@Test()
+	void testStringOfOne() {
+		String expected = "F";
+		String input = "F";
+		int length = 1;
+		
+		String actual = stringFunctions.wrap(input, length);
+		assertEquals(expected, actual);
+	}
+	
 	//_____ UNEXPECTED TESTS _____
 	@Test()
 	void testNegativeLength() {
