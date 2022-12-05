@@ -45,12 +45,14 @@ public class StringFunctions {
     					}
     				}
     				
+    			} else {
+	    			ret += String.join(" ", line) + "\n";
+	    			line.clear();
+	    			line.add(word);
     			}
-    			ret += String.join(" ", line) + "\n";
-    			line.clear();
-    			line.add(word);
     		}
     	}
-        return ret.substring(0, ret.length() - 1);
+    	ret += String.join(" ", line);
+        return ret;
     }
 }

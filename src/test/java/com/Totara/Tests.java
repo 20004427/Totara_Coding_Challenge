@@ -55,6 +55,33 @@ public class Tests {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testSentence() {
+		String expected = "The quick\nbrown fox\njumps over\nthe lazy\ndog";
+		String input = "The quick brown fox jumps over the lazy dog";
+		int length = 10;
+		
+		String actual = StringFunctions.wrap(input, length);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testParagraph() {
+		String expected = "According to all\nknown laws of\naviation, "
+				+ "there is\nno way that a bee\nshould be able to\nfly. "
+				+ "Its wings are\ntoo small to get its\nfat little body off\nthe ground. "
+				+ "The bee,\nof course, flies\nanyway. "
+				+ "Because bees\ndon’t care what\nhumans think is\nimpossible";
+		String input = "According to all known laws of aviation, "
+				+ "there is no way that a bee should be able to fly. "
+				+ "Its wings are too small to get its fat little body off the ground. "
+				+ "The bee, of course, flies anyway. "
+				+ "Because bees don’t care what humans think is impossible";
+		int length = 20;
+		String actual = StringFunctions.wrap(input, length);
+		assertEquals(expected, actual);
+	}
+	
 	//_____ UNEXPECTED TESTS _____
 	@Test(expected = IllegalArgumentException.class)
 	public void testNegativeLength() {
