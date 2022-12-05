@@ -78,6 +78,17 @@ public class Tests {
 				+ "The bee, of course, flies anyway. "
 				+ "Because bees don’t care what humans think is impossible";
 		int length = 20;
+		
+		String actual = StringFunctions.wrap(input, length);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testSentenceIncludingWordsLongerThanLength() {
+		String expected = "An a\npple\na\nday\nkeep\ns an\nyone\naway\nif\nyou\nthro\nw it\nhard\nenou\ngh!";
+		String input = "An apple a day keeps anyone away if you throw it hard enough!";
+		int length = 4;
+		
 		String actual = StringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}

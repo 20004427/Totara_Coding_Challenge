@@ -29,14 +29,24 @@ public class StringFunctions {
     	String[] words = string.split(" ");
     	for (String word: words) {
     		line.add(word);
+    		System.out.println(line);
     		if (line.stream().mapToInt(String::length).sum() + line.size() - 1 > length) {
     			line.remove(line.size() - 1);
     			if (word.length() > length) {
-    				int index = length - line.stream().mapToInt(String::length).sum() + line.size();
-    				line.add(word.substring(0, index));
-    				ret += String.join(" ", line) + "\n";
+    				int index = length - line.stream().mapToInt(String::length).sum() - line.size();
+    				if (index > 0) {
+	    				line.add(word.substring(0, index));
+	    				ret += String.join(" ", line) + "\n";
+    				} else {
+    					ret += String.join(" ", line) + "\n";
+    				}
     				line.clear();
-    				String[] remainder = word.substring(index).split("(?<=\\G.{" + length + "})");
+    				String[] remainder;
+    				if (index > 0) {
+    					remainder = word.substring(index).split("(?<=\\G.{" + length + "})");
+    				} else {
+    					remainder = word.split("(?<=\\G.{" + length + "})");
+    				}
     				for (String s: remainder) {
     					if (s.length() < length) {
     						line.add(s);
