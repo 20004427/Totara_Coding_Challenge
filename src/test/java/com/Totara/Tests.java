@@ -17,7 +17,7 @@ public class Tests {
 	
 	//_____ EXPECTED TESTS _____
 	@Test
-	public void testOneWordLessThanLineLength() {
+	void testOneWordLessThanLineLength() {
 		String expected = "Test";
 		String input = "Test";
 		int length = 12;
@@ -27,7 +27,7 @@ public class Tests {
 	}
 	
 	@Test 
-	public void testOneWordLongerThanLineLength() {
+	void testOneWordLongerThanLineLength() {
 		String expected = "Tes\nt";
 		String input = "Test";
 		int length = 3;
@@ -37,7 +37,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void testOneWordLongerThanDoubleLineLength() {
+	void testOneWordLongerThanDoubleLineLength() {
 		String expected = "Tes\ntin\ng";
 		String input = "Testing";
 		int length = 3;
@@ -47,7 +47,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void testMultipleWords() {
+	void testMultipleWords() {
 		String expected = "Test\nOwO\nUwU";
 		String input = "Test OwO UwU";
 		int length = 4;
@@ -57,7 +57,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void testSentence() {
+	void testSentence() {
 		String expected = "The quick\nbrown fox\njumps over\nthe lazy\ndog";
 		String input = "The quick brown fox jumps over the lazy dog";
 		int length = 10;
@@ -67,7 +67,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void testParagraph() {
+	void testParagraph() {
 		String expected = "According to all\nknown laws of\naviation, "
 				+ "there is\nno way that a bee\nshould be able to\nfly. "
 				+ "Its wings are\ntoo small to get its\nfat little body off\nthe ground. "
@@ -85,7 +85,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void testSentenceIncludingWordsLongerThanLength() {
+	void testSentenceIncludingWordsLongerThanLength() {
 		String expected = "An a\npple\na\nday\nkeep\ns an\nyone\naway\nif\nyou\nthro\nw it\nhard\nenou\ngh!";
 		String input = "An apple a day keeps anyone away if you throw it hard enough!";
 		int length = 4;
@@ -96,7 +96,7 @@ public class Tests {
 	
 	//_____ UNEXPECTED TESTS _____
 	@Test()
-	public void testNegativeLength() {
+	void testNegativeLength() {
 		String input = "Test";
 		int length = -10;
 		
@@ -106,7 +106,7 @@ public class Tests {
 	}
 	
 	@Test()
-	public void testZeroLength() {
+	void testZeroLength() {
 		String input = "Test";
 		int length = 0;
 		
@@ -116,7 +116,7 @@ public class Tests {
 	}
 	
 	@Test()
-	public void testEmptyString() {
+	void testEmptyString() {
 		String input = "";
 		int length = 1;
 		
@@ -126,7 +126,7 @@ public class Tests {
 	}
 	
 	@Test()
-	public void testEmptyStringWithSpaces() {
+	void testEmptyStringWithSpaces() {
 		String input = "    ";
 		int length = 1;
 		
