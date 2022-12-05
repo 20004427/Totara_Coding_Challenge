@@ -3,7 +3,7 @@ package com.Totara;
 import java.util.ArrayList;
 
 public class StringFunctions {
-    private static StringFunctions instance;
+    private static StringFunctions instance = null;
 
     private StringFunctions() {
 
@@ -16,10 +16,13 @@ public class StringFunctions {
         return instance;
     }
 
-    public static String wrap(String string, int length) {
+    public String wrap(String string, int length) {
     	string = string.strip();
-    	if (length <= 0 || string.length() == 0) {
+    	if (length <= 0) {
     		throw new IllegalArgumentException("Length must be greater than 0");
+    	}
+    	else if (string.length() == 0) {
+    		throw new IllegalArgumentException("The string cannot be empty");
     	}
     	if (string.length() <= length) {
     		return string;
@@ -29,7 +32,6 @@ public class StringFunctions {
     	String[] words = string.split(" ");
     	for (String word: words) {
     		line.add(word);
-    		System.out.println(line);
     		if (line.stream().mapToInt(String::length).sum() + line.size() - 1 > length) {
     			line.remove(line.size() - 1);
     			if (word.length() > length) {

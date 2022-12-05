@@ -1,16 +1,17 @@
 package com.Totara;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class Tests {
 	private static StringFunctions stringFunctions;
 	
 	//_____ INIT _____
 	@BeforeAll
-	public void init() {
+	public static void init() {
 		stringFunctions = StringFunctions.getInstance();
 	}
 	
@@ -21,7 +22,7 @@ public class Tests {
 		String input = "Test";
 		int length = 12;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
@@ -31,7 +32,7 @@ public class Tests {
 		String input = "Test";
 		int length = 3;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
@@ -41,7 +42,7 @@ public class Tests {
 		String input = "Testing";
 		int length = 3;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
@@ -51,7 +52,7 @@ public class Tests {
 		String input = "Test OwO UwU";
 		int length = 4;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
@@ -61,7 +62,7 @@ public class Tests {
 		String input = "The quick brown fox jumps over the lazy dog";
 		int length = 10;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
@@ -79,7 +80,7 @@ public class Tests {
 				+ "Because bees don’t care what humans think is impossible";
 		int length = 20;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
@@ -89,45 +90,49 @@ public class Tests {
 		String input = "An apple a day keeps anyone away if you throw it hard enough!";
 		int length = 4;
 		
-		String actual = StringFunctions.wrap(input, length);
+		String actual = stringFunctions.wrap(input, length);
 		assertEquals(expected, actual);
 	}
 	
 	//_____ UNEXPECTED TESTS _____
-	@Test(expected = IllegalArgumentException.class)
+	@Test()
 	public void testNegativeLength() {
 		String input = "Test";
 		int length = -10;
 		
-		StringFunctions.wrap(input, length);
-		assert(false);
+		assertThrows(IllegalArgumentException.class, 
+				() -> {stringFunctions.wrap(input, length);}, 
+				"Length must be greater than 0");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test()
 	public void testZeroLength() {
 		String input = "Test";
 		int length = 0;
 		
-		StringFunctions.wrap(input, length);
-		assert(false);
+		assertThrows(IllegalArgumentException.class, 
+				() -> {stringFunctions.wrap(input, length);}, 
+				"Length must be greater than 0");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test()
 	public void testEmptyString() {
 		String input = "";
 		int length = 1;
 		
-		StringFunctions.wrap(input, length);
-		assert(false);
+		assertThrows(IllegalArgumentException.class, 
+				() -> {stringFunctions.wrap(input, length);}, 
+				"The string cannot be empty");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test()
 	public void testEmptyStringWithSpaces() {
 		String input = "    ";
 		int length = 1;
 		
-		StringFunctions.wrap(input, length);
-		assert(false);
+		assertThrows(IllegalArgumentException.class, 
+				() -> {stringFunctions.wrap(input, length);}, 
+				"The string cannot be empty");
 	}
 
 }
